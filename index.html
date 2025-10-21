@@ -1,0 +1,571 @@
+<!doctype html>
+<html lang="ar">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>من الموجة إلى البت — رحلة الصوت الرقمي</title>
+  <meta name="description"
+    content="من الموجة إلى البت — موقع تفاعلي لشرح الصوت الرقمي، التقطيع، التكمية، وضغط الصوت." />
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&family=Poppins:wght@400;600&display=swap"
+    rel="stylesheet">
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <div class="logo">
+        <img src="assets/logo.webp" alt="logo">
+        <div>
+          <div style="font-weight:800;color:var(--muted);font-size:18px">من الموجة إلى البت</div>
+          <div style="font-size:12px;color:#9fb9d0">From Wave to Bit — Digital Audio</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#home">الرئيسية</a>
+        <a href="#journey">رحلة الصوت</a>
+        <a href="#lab">مختبر التقطيع</a>
+        <a href="#compression">ضغط الصوت</a>
+      </nav>
+    </header>
+
+    <!-- HERO / HOME -->
+    <main id="home" class="hero" style="position:relative;
+             display:flex;justify-content:center;align-items:center;flex-direction:column;text-align:center;
+             padding:60px 20px;color:#e2e8f0;min-height:60vh;overflow:hidden;border-radius:12px;">
+      <video autoplay muted loop playsinline
+        style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-1;opacity:0.25;">
+        <source src="assets/intro.mp4" type="video/mp4">
+        متصفحك لا يدعم عرض الفيديو.
+      </video>
+      <div style="max-width:700px; z-index:1;">
+        <h1 style="font-size:clamp(20px,3vw,30px);color:#38bdf8;margin-bottom:10px;line-height:1.6;font-weight:700;">
+          🔊 من الموجة إلى البِت: رحلة الصوت الرقمي
+        </h1>
+        <p style="font-size:16px;color:#e2e8f0;line-height:1.8;margin:0 auto 18px;max-width:650px;
+          text-shadow:0 2px 6px rgba(0,0,0,0.4);">
+          منصة تعليمية تفاعلية لطلاب مقرر <strong style='color:#38bdf8;'>نظم الوسائط المتعددة</strong> —
+          استكشف كيف يتحول الصوت من موجة إلى بيانات رقمية، وتعرّف على خطوات
+          <strong style='color:#38bdf8;'>التقطيع</strong> و<strong style='color:#38bdf8;'>التكمية</strong>،
+          واطّلع على تقنيات <strong style='color:#38bdf8;'>ضغط الصوت</strong>.
+        </p>
+        <div style="margin-top:22px;">
+          <button class="btn" onclick="scrollToSection('journey')" style="padding:10px 26px; font-size:15px; color:#0f172a;background:#38bdf8; border:none;
+             border-radius:8px;  cursor:pointer;transition:0.3s;">
+            ابدأ رحلتك
+          </button>
+        </div>
+        <div style="margin-top:14px; font-size:13px; color:#cbd5e1;">
+          الفصل الرابع — الصوت الرقمي (<span style="color:#38bdf8;">BMM601</span>)
+        </div>
+      </div>
+    </main>
+
+    <!-- Journey -->
+    <section id="journey" class="card" aria-labelledby="journey-title" style="text-align:center;">
+      <h2 id="journey-title" class="section-title">🎧 رحلة الصوت من الهواء إلى البت</h2>
+      <!-- شرح رحلة الصوت -->
+      <div style="max-width:700px; margin:0 auto 24px;text-align:center;color:#dbeafe;line-height:1.9;font-size:17px;">
+        <p style="margin-bottom:18px;">
+          الصوت موجة ميكانيكية تنتشر في الهواء. عند وصولها إلى الأذن، تُحوَّل الذبذبات إلى إشارات كهربائية
+          تنتقل عبر <strong style='color:#38bdf8;'>العصب السمعي</strong> إلى الدماغ ليتم تفسيرها كأصوات مفهومة.
+        </p>
+        <p style="margin-bottom:16px;">
+          يلتقط <strong style='color:#38bdf8;'>الحاسوب</strong> هذه الموجة ويرقمنها عبر عمليتي
+          <strong style='color:#38bdf8;'>التقطيع</strong> و<strong style='color:#38bdf8;'>التكمية</strong>
+          للحصول على تمثيل رقمي دقيق يمكن تخزينه أو معالجته.
+        </p>
+
+        <p style="font-size:15px;color:#94a3b8; margin-top:22px;line-height:1.8;">
+          🎧 الرسم أدناه يوضّح رحلة الصوت داخل الأذن — مرّر المؤشر فوق الأجزاء لمعرفة وظائفها.
+        </p>
+      </div>
+      <!-- الرسم التفاعلي مصغّر -->
+      <div class="ear-stage" id="earStage" style="position:relative;max-width:600px;margin:30px auto;border-radius:12px;overflow:hidden;
+        background: rgba(255, 255, 255, 0.85);padding:25px 0;">
+        <img src="assets/ear.webp" alt="رسم واقعي للأذن البشرية"
+          style="width:100%;height:auto;display:block;border-radius:12px;">
+        <!-- النقاط التفاعلية -->
+        <div class="hotspot" data-name="الصيوان" data-text="يجمع الموجات الصوتية ويوجهها نحو القناة السمعية الخارجية."
+          style="top:32%; left:14%; width:8%; height:12%;"></div>
+        <div class="hotspot" data-name="قناة السمع" data-text="تنقل الاهتزازات الصوتية من الصيوان إلى غشاء الطبل."
+          style="top:45%; left:33%; width:9%; height:6%;"></div>
+        <div class="hotspot" data-name="غشاء الطبل"
+          data-text="غشاء رقيق يهتز عندما تصله الموجات الصوتية وينقل الطاقة الميكانيكية إلى العظيمات."
+          style="top:47%; left:49%; width:6%; height:10%;"></div>
+        <div class="hotspot" data-name="العظيمات الثلاث"
+          data-text="المطرقة والسندان والركاب: تضخّم الاهتزاز وتنقله إلى الأذن الداخلية."
+          style="top:47%; left:58%; width:8%; height:10%;"></div>
+        <div class="hotspot" data-name="القوقعة"
+          data-text="تحوّل الاهتزازات إلى سيالات عصبية عبر الخلايا الشعرية التي تنقل الإشارة إلى الدماغ عبر العصب السمعي."
+          style="top:55%; left:70%; width:9%; height:12%;"></div>
+        <div class="hotspot" data-name="الخلايا الشعرية"
+          data-text="الخلايا الشعرية في الأذن الداخلية تستقبل الاهتزازات وتحولها إلى سيالات عصبية تُرسل إلى الدماغ عبر العصب السمعي."
+          style="top:80%; left:60%; width:10%; height:10%;"></div>
+        <div class="popup" id="earPopup">
+          <h2 id="earTitle"></h2>
+          <p id="earText"></p>
+        </div>
+      </div>
+      <style>
+        .ear-stage .hotspot {
+          position: absolute;
+          border-radius: 50%;
+          background: rgba(34, 197, 94, 0.25);
+          cursor: pointer;
+          transition: all .25s ease;
+        }
+
+        .ear-stage .hotspot:hover {
+          background: rgba(34, 197, 94, 0.45);
+          transform: scale(1.1);
+        }
+
+        #earPopup {
+          position: absolute;
+          display: none;
+          min-width: 150px;
+          background: rgba(11, 18, 32, 0.95);
+          color: #fff;
+          padding: 6px 8px;
+          border-radius: 8px;
+          font-size: 12px;
+          line-height: 1.4;
+          z-index: 10;
+          box-shadow: 0 4px 10px #0005;
+        }
+
+        #earPopup h2 {
+          font-size: 13px;
+          margin: 0 0 3px;
+          color: #22c55e;
+        }
+
+        #earPopup::after {
+          content: '';
+          position: absolute;
+          bottom: -6px;
+          right: 20px;
+          border-width: 6px;
+          border-style: solid;
+          border-color: #0b1220 transparent transparent transparent;
+        }
+      </style>
+      <script>
+        const popup = document.getElementById('earPopup');
+        const title = document.getElementById('earTitle');
+        const text = document.getElementById('earText');
+        const stage = document.getElementById('earStage');
+        // إعداد موضع ثابت نسبي أسفل منتصف المنطقة
+        function showPopup(el) {
+          const stageRect = stage.getBoundingClientRect();
+          const rect = el.getBoundingClientRect();
+          title.textContent = el.dataset.name;
+          text.textContent = el.dataset.text;
+          popup.style.display = 'block';
+          popup.style.top = (rect.top - stageRect.top - 50) + 'px';
+          popup.style.left = (rect.left - stageRect.left + rect.width / 2 - popup.offsetWidth / 2) + 'px';
+        }
+        function hidePopup() {
+          popup.style.display = 'none';
+        }
+        document.querySelectorAll('.ear-stage .hotspot').forEach(el => {
+          // زيادة مساحة الحساسية قليلًا لتجنب تقطع المؤشر عند الأطراف
+          el.style.padding = '6px';
+          el.style.margin = '-6px';
+
+          el.addEventListener('mouseenter', () => showPopup(el));
+          el.addEventListener('mouseleave', hidePopup);
+        });
+        // منع الوميض الناتج عن تكرار الحساب أثناء الحركة داخل نفس العنصر
+        stage.addEventListener('mousemove', e => {
+          if (!popup.style.display || popup.style.display === 'none') return;
+          e.stopPropagation();
+        });
+      </script>
+    </section>
+
+    <!-- SECTION: Sampling & Quantization Lab -->
+    <section id="lab" class="card" aria-labelledby="lab-title" style="padding:60px 20px; text-align:center;">
+      <h2 id="lab-title" class="section-title" style="color:#38bdf8; margin-bottom:20px;">
+        🧪 مختبر التقطيع والتكمية (Sampling & Quantization Lab)
+      </h2>
+      <!-- نص تمهيدي -->
+      <p style="max-width:750px;margin:auto;color:#cbd5e1;line-height:1.9;font-size:17px;margin-bottom:32px;">
+        يوضّح هذا المختبر تأثير كلٍّ من <strong style="color:#38bdf8;">معدل التقطيع (Sampling Rate)</strong>
+        و<strong style="color:#38bdf8;">عدد البتات (Bit Depth)</strong> على جودة الصوت.
+        يمكنك تعديل القيم أدناه وملاحظة التغيّرات على شكل الموجة وجودة الصوت الناتج.
+      </p>
+      <!-- واجهة التفاعل -->
+      <div style="max-width:900px;margin:auto;background:#0f172a;border-radius:12px;padding:30px;
+        box-shadow:0 4px 20px #00000040;">
+        <!-- Sliders -->
+        <div style="margin-bottom:30px;text-align:right;">
+          <label for="sampleRate" style="color:#93c5fd;font-size:15px;">معدل التقطيع (Hz): <span
+              id="rateValue">22050</span></label>
+          <input type="range" id="sampleRate" min="8000" max="44100" step="1000" value="22050"
+            style="width:100%;margin:10px 0;">
+          <label for="bitDepth" style="color:#93c5fd;font-size:15px;">عدد البتات (Bit Depth): <span
+              id="bitValue">8</span></label>
+          <input type="range" id="bitDepth" min="4" max="16" step="1" value="8" style="width:100%;margin:10px 0;">
+        </div>
+        <!-- Canvas لعرض الموجة -->
+        <canvas id="waveCanvas" width="850" height="200"
+          style="width:100%;border-radius:8px;background:#1e293b;"></canvas>
+        <!-- ملاحظات المستخدم -->
+        <p id="observation" style="color:#94a3b8;margin-top:20px;font-size:15px;">غيّر القيم أعلاه لملاحظة أثرها على
+          الموجة.</p>
+      </div>
+      <!-- فقرة علمية -->
+      <div style=" max-width:820px; margin:40px auto;color:#dbeafe;font-size:17px;line-height:2;
+        text-align:right;direction:rtl;">
+        <p style="margin-bottom:10px;">
+          <strong style="color:#38bdf8;font-size:18px;">المبدأ العلمي:</strong>
+          يعتمد تمثيل الصوت رقمياً على مبدأين أساسيين هما
+          <strong style="color:#38bdf8;">التقطيع (Sampling)</strong> و
+          <strong style="color:#38bdf8;">التكمية (Quantization)</strong>.
+        </p>
+        <p style="margin-bottom:10px;color:#cbd5e1;">
+          وفقاً لـ <strong style="color:#38bdf8;">نظرية نايكويست (Nyquist)</strong>،
+          يجب أن يكون <strong>معدل التقطيع</strong>
+          ضعف أعلى تردد موجود في الإشارة الأصلية لضمان إعادة بناء دقيقة دون فقد للمعلومات.
+        </p>
+        <p style="margin:0;color:#cbd5e1;">
+          أما <strong>عدد البتات (Bit Depth)</strong> فيؤثر على
+          <strong style="color:#38bdf8;">نسبة الإشارة إلى الضجيج (SNR)</strong>،
+          حيث إن كل زيادة بمقدار <strong>1 بت</strong>
+          تُحسِّن جودة الإشارة بنحو <strong style="color:#38bdf8;">6 ديسيبل</strong>.
+        </p>
+      </div>
+
+    </section>
+
+    <!-- سكربت تفاعلي -->
+    <script>
+      const canvas = document.getElementById('waveCanvas');
+      const ctx1 = canvas.getContext('2d');
+      const rateSlider = document.getElementById('sampleRate');
+      const bitSlider = document.getElementById('bitDepth');
+      const rateValue = document.getElementById('rateValue');
+      const bitValue = document.getElementById('bitValue');
+      const observation = document.getElementById('observation');
+
+      function drawWave(rate, bits) {
+        ctx1.clearRect(0, 0, canvas.width, canvas.height);
+        const amplitude = canvas.height / 3;
+        const mid = canvas.height / 2;
+        ctx1.beginPath();
+        ctx1.moveTo(0, mid);
+
+        const step = canvas.width / 200;
+        for (let x = 0; x < canvas.width; x += step) {
+          const freq = 2 * Math.PI * (rate / 44100);
+          const y = mid + amplitude * Math.sin(x * freq);
+          ctx1.lineTo(x, y);
+        }
+        ctx1.strokeStyle = '#38bdf8';
+        ctx1.lineWidth = 2;
+        ctx1.stroke();
+
+        // نقاط التكمية التقريبية
+        const quantStep = Math.pow(2, bits);
+        ctx1.fillStyle = '#f97316';
+        for (let x = 0; x < canvas.width; x += 25) {
+          const freq = 2 * Math.PI * (rate / 44100);
+          const y = mid + amplitude * Math.sin(x * freq);
+          const qY = Math.round(y / quantStep) * quantStep;
+          ctx1.beginPath();
+          ctx1.arc(x, qY, 2, 0, 2 * Math.PI);
+          ctx1.fill();
+        }
+      }
+
+      function update() {
+        const rate = parseInt(rateSlider.value);
+        const bits = parseInt(bitSlider.value);
+        rateValue.textContent = rate;
+        bitValue.textContent = bits;
+        drawWave(rate, bits);
+
+        if (rate < 16000)
+          observation.textContent = "جودة منخفضة — لا يمكن تمثيل الترددات العالية (تحت حد نايكويست).";
+        else if (bits < 8)
+          observation.textContent = "جودة متوسطة — زيادة عدد البتات تقلل التشويش الناتج عن التكمية.";
+        else
+          observation.textContent = "جودة مرتفعة — تمثيل جيد للترددات مع ضجيج منخفض.";
+      }
+
+      rateSlider.addEventListener('input', update);
+      bitSlider.addEventListener('input', update);
+      drawWave(22050, 8);
+    </script>
+
+    <!-- Compression -->
+    <section id="compression" class="card" aria-labelledby="comp-title">
+      <h2 id="comp-title" class="section-title">🎛️ افهم ضغط الصوت</h2>
+      <div class="grid">
+        <div>
+          <p class="muted">شرح مبسّط لأنواع الضغط:</p>
+          <div style="display:grid;gap:10px;margin-top:12px">
+            <div style="background:#021826;padding:12px;border-radius:8px">
+              <strong>PCM</strong>
+              <div class="muted">تخزين كل عينة كما هي → جودة عالية، حجم كبير.</div>
+              <div style="margin-top:6px"><button class="btn" onclick="playCompression('pcm')">استمع PCM</button></div>
+            </div>
+            <div style="background:#021826;padding:12px;border-radius:8px">
+              <strong>DPCM</strong>
+              <div class="muted">تخزين الفرق بين العينات → حجم أصغر مع جودة جيدة.</div>
+              <div style="margin-top:6px"><button class="btn" onclick="playCompression('dpcm')">استمع DPCM</button>
+              </div>
+            </div>
+            <div style="background:#021826;padding:12px;border-radius:8px">
+              <strong>Delta Modulation</strong>
+              <div class="muted">تخزين اتجاه التغيير فقط → حجم صغير، جودة منخفضة.</div>
+              <div style="margin-top:6px"><button class="btn" onclick="playCompression('delta')">استمع Delta</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <canvas id="sizeChart" width="400" height="260" style="background:#001820;border-radius:8px"></canvas>
+          <div style="color:#9fb9d0;margin-top:8px">مخطط توضيحي لحجم الملف مقابل جودة النموذج (محاكاة)</div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © جامعة — مشروع فصل SVU — تصميم وتنفيذ: [أسماء الطلاب]
+    </footer>
+  </div>
+
+  <script>
+    /* ---------- small helpers ---------- */
+    function scrollToSection(id) {
+      document.querySelector('#' + id).scrollIntoView({ behavior: 'smooth' });
+    }
+
+    /* ---------- LAB: sampling & quantization simulation ---------- */
+    const srEl = document.getElementById('sampleRate');
+    const bdEl = document.getElementById('bitDepth');
+    const srVal = document.getElementById('rateValue');
+    const bdVal = document.getElementById('bitValue');
+    const playBtn = document.getElementById('playBtn');
+    const waveCanvas = document.getElementById('waveCanvas');
+    const ctx = waveCanvas.getContext('2d');
+    let example = 'tone';
+    srEl.addEventListener('input', () => { srVal.textContent = srEl.value });
+    bdEl.addEventListener('input', () => { bdVal.textContent = bdEl.value });
+
+    function setExample(name) {
+      example = name;
+      document.getElementById('labNote').textContent = "مثال: " + (name === 'speech' ? 'مقطع كلامي' : 'نغمة مركبة');
+    }
+
+    /* generate source buffer (mono) */
+    function generateSourceBuffer(lengthSeconds = 2, sampleRate = 44100) {
+      const sr = sampleRate;
+      const len = Math.floor(lengthSeconds * sr);
+      const arr = new Float32Array(len);
+      for (let i = 0; i < len; i++) {
+        const t = i / sr;
+        // choose example
+        if (example === 'speech') {
+          // synthetic vowel-like short waveform: sum of few sinusoids
+          arr[i] = 0.4 * Math.sin(2 * Math.PI * 220 * t) + 0.25 * Math.sin(2 * Math.PI * 440 * t) + 0.08 * Math.sin(2 * Math.PI * 880 * t);
+        } else {
+          // tone composite: 440 + 880
+          arr[i] = 0.5 * Math.sin(2 * Math.PI * 440 * t) + 0.3 * Math.sin(2 * Math.PI * 880 * t);
+        }
+      }
+      // normalize
+      let max = 0; for (let v of arr) if (Math.abs(v) > max) max = Math.abs(v);
+      if (max > 0) { for (let i = 0; i < arr.length; i++) arr[i] /= max; }
+      return { arr, sr };
+    }
+
+    /* quantize float32 array to N bits */
+    function quantizeArray(floatArr, bits) {
+      const levels = Math.pow(2, bits);
+      const out = new Float32Array(floatArr.length);
+      for (let i = 0; i < floatArr.length; i++) {
+        // map [-1,1] -> [0,levels-1]
+        const scaled = Math.round(((floatArr[i] + 1) / 2) * (levels - 1));
+        // map back
+        out[i] = (scaled / (levels - 1)) * 2 - 1;
+      }
+      return out;
+    }
+
+    /* downsample original to simulate lower sampling rate then upsample back (simple) */
+    function resampleFloat(arr, srcRate, dstRate) {
+      if (srcRate === dstRate) return arr;
+      const len = Math.floor(arr.length * dstRate / srcRate);
+      const out = new Float32Array(len);
+      const ratio = srcRate / dstRate;
+      for (let i = 0; i < len; i++) {
+        const srcIndex = Math.floor(i * ratio);
+        out[i] = arr[srcIndex] || 0;
+      }
+      return out;
+    }
+
+    /* draw original and quantized wave */
+    function drawWaves(original, quantized) {
+      const w = waveCanvas.width;
+      const h = waveCanvas.height;
+      ctx.clearRect(0, 0, w, h);
+      // top half: original
+      ctx.lineWidth = 1.5;
+      ctx.strokeStyle = "#60A5FA";
+      ctx.beginPath();
+      const len = original.length;
+      for (let i = 0; i < len; i++) {
+        const x = Math.floor(i / len * w);
+        const y = (h / 4) * (1 - original[i]) + 10;
+        if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+      // bottom half: quantized
+      ctx.lineWidth = 1.2;
+      ctx.strokeStyle = "#C084FC";
+      ctx.beginPath();
+      const lenQ = quantized.length;
+      for (let i = 0; i < lenQ; i++) {
+        const x = Math.floor(i / lenQ * w);
+        const y = (h * 3 / 4) * (1 - quantized[i]) + 10;
+        if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+
+      // labels
+      ctx.fillStyle = "#79bfe0"; ctx.font = "12px Tajawal";
+      ctx.fillText("الموجة الأصلية", 8, 14);
+      ctx.fillText("بعد التكمية", 8, h * 0.75 + 4);
+    }
+
+    /* create audio buffer from Float32Array and play */
+    async function playFloatArray(floatArr, sr) {
+      ensureCtx();
+      const buf = audioCtx.createBuffer(1, floatArr.length, sr);
+      buf.getChannelData(0).set(floatArr);
+      const src = audioCtx.createBufferSource();
+      src.buffer = buf;
+      const gain = audioCtx.createGain(); gain.gain.value = 0.12;
+      src.connect(gain); gain.connect(audioCtx.destination);
+      src.start();
+    }
+
+    /* main: process parameters then play and draw */
+    async function playProcessed() {
+      playBtn.disabled = true; playBtn.textContent = "جارٍ التشغيل...";
+      const srTarget = parseInt(srEl.value, 10);
+      const bd = parseInt(bdEl.value, 10);
+      // generate high-quality source at 44100
+      const source = generateSourceBuffer(2, 44100);
+      // resample to target then quantize then upsample to 44100 for playback
+      const down = resampleFloat(source.arr, 44100, srTarget);
+      const quant = quantizeArray(down, bd);
+      // upsample naive (repeat)
+      const up = resampleFloat(quant, srTarget, 44100);
+      drawWaves(source.arr.slice(0, Math.min(2000, source.arr.length)), up.slice(0, Math.min(2000, up.length)));
+      await playFloatArray(up, 44100);
+      playBtn.disabled = false; playBtn.textContent = "استمع الآن";
+    }
+
+    /* ---------- Compression demos (simple algorithms) ---------- */
+
+    /* DPCM: predict previous sample */
+    function dpcmEncode(arr, bits) {
+      const levels = Math.pow(2, bits);
+      const out = new Float32Array(arr.length);
+      let prev = 0;
+      for (let i = 0; i < arr.length; i++) {
+        const diff = arr[i] - prev;
+        // quantize diff into limited levels
+        const scaled = Math.round(((diff + 1) / 2) * (levels - 1));
+        const rec = (scaled / (levels - 1)) * 2 - 1;
+        prev = prev + rec;
+        out[i] = prev;
+      }
+      return out;
+    }
+
+    /* Delta modulation: binary step up/down by step */
+    function deltaMod(arr, step = 0.05) {
+      const out = new Float32Array(arr.length);
+      let prev = 0;
+      for (let i = 0; i < arr.length; i++) {
+        const bit = (arr[i] >= prev) ? 1 : -1;
+        prev = prev + bit * step;
+        out[i] = prev;
+      }
+      return out;
+    }
+
+    /* play compression variant */
+    // AudioContext موحّد مع تفعيل بعد أول نقرة
+    let audioCtx;
+    function ensureCtx() {
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      if (audioCtx.state === 'suspended') {
+        const resume = () => { audioCtx.resume(); window.removeEventListener('click', resume); };
+        window.addEventListener('click', resume, { once: true });
+      }
+    }
+    async function playCompression(type) {
+      ensureCtx();
+      const src = generateSourceBuffer(2, 44100);
+      let processed;
+      if (type === 'pcm') {
+        processed = src.arr;
+      } else if (type === 'dpcm') {
+        processed = dpcmEncode(src.arr, 8); // e.g. 8-bit differences
+      } else {
+        processed = deltaMod(src.arr, 0.03);
+      }
+      await playFloatArray(processed, 44100);
+    }
+
+    /* ---------- Chart for compression sizes (mock data) ---------- */
+    const chartCtx = document.getElementById('sizeChart').getContext('2d');
+    const sizeChart = new Chart(chartCtx, {
+      type: 'bar',
+      data: {
+        labels: ['PCM', 'DPCM', 'Delta'],
+        datasets: [{
+          label: 'Estimated file size (KB)',
+          data: [450, 280, 110],
+          backgroundColor: ['#60A5FA', '#C084FC', '#7dd3fc']
+        }, {
+          label: 'Perceived quality (relative)',
+          data: [95, 80, 45],
+          type: 'line',
+          yAxisID: 'y1',
+          borderColor: '#cbd5e1',
+          fill: false,
+          tension: 0.3
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: { beginAtZero: true, position: 'left' },
+          y1: { position: 'right', beginAtZero: true, max: 100 }
+        },
+        plugins: { legend: { labels: { color: '#9fb9d0' } } }
+      }
+    });
+
+    /* set initial example */
+    setExample('tone');
+
+  </script>
+</body>
+
+</html>
